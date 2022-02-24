@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/index.js":[function(require,module,exports) {
+})({"src/f1.js":[function(require,module,exports) {
 //import  from "./App.js";
 var cantidad_input = document.querySelector("#cantidad");
 var form = document.querySelector("#primera-funcion-form");
@@ -126,12 +126,7 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
   var cantidad = cantidad_input.value;
   div.innerHTML = "<p> Cantidad de items: " + cantidad + "</p>";
-}); //this work?
-// let me try
-// it dont
-// puedes meter
-// pero no muestra y eso nomas es
-// ahh yayya it does owr
+});
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -160,7 +155,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56557" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57220" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -336,5 +331,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.js"], null)
-//# sourceMappingURL=/src.a2b27638.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f1.js"], null)
+//# sourceMappingURL=/f1.de0426d6.js.map
