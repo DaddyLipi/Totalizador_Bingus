@@ -117,16 +117,44 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/f2.js":[function(require,module,exports) {
-var precio_input = document.querySelector("#precio");
+})({"src/impuestoEstado.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function impuesto(state) {
+  var estado = {
+    'TX': 6.25,
+    'AL': 4,
+    'CA': 8.25,
+    'NV': 8,
+    'UT': 6.65
+  };
+  return estado[state];
+}
+
+var _default = impuesto;
+exports.default = _default;
+},{}],"src/f3.js":[function(require,module,exports) {
+"use strict";
+
+var _impuestoEstado = _interopRequireDefault(require("./impuestoEstado.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var estado_input = document.querySelector("#state");
 var form = document.querySelector("#primera-funcion-form");
-var div = document.querySelector("#resultado2-div");
+var div = document.querySelector("#resultado3-div");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  var precio = precio_input.value;
-  div.innerHTML = "<p> Precio de items: " + precio + "</p>";
+  var estado = estado_input.value;
+  var imp = (0, _impuestoEstado.default)(estado);
+  div.innerHTML = "<p> Estado: " + estado + " --> " + imp + " $ </p>";
 });
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./impuestoEstado.js":"src/impuestoEstado.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -330,5 +358,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f2.js"], null)
-//# sourceMappingURL=/f2.e7099910.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f3.js"], null)
+//# sourceMappingURL=/f3.af2695bc.js.map
