@@ -9,4 +9,4 @@ function impuesto(state)
     }
     return estado[state];
 }
-export default impuesto
+export default impuesto;

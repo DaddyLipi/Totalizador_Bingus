@@ -117,14 +117,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/f2.js":[function(require,module,exports) {
-var precio_input = document.querySelector("#precio");
+})({"src/f4.js":[function(require,module,exports) {
 var form = document.querySelector("#primera-funcion-form");
-var div = document.querySelector("#resultado2-div");
+var precio_input = document.querySelector("#precio");
+var cant_input = document.querySelector("#cantidad");
+var div = document.querySelector("#resultado4-div");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  var precio = precio_input.value;
-  div.innerHTML = "<p> Precio de items: " + precio + "</p>";
+  var result = precio_input.value * cant_input.value;
+  div.innerHTML = "<p> Costo Neto: " + result + " $ </p>";
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -330,5 +331,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f2.js"], null)
-//# sourceMappingURL=/f2.e7099910.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f4.js"], null)
+//# sourceMappingURL=/f4.c207c343.js.map

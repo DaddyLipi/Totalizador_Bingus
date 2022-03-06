@@ -1,6 +1,6 @@
 function descuento(monto)
 {
-    let desc=0;
+    var desc=0;
     if(monto >= 30000){
         desc= 1.5;
     }
@@ -24,5 +24,5 @@ function descuento(monto)
     }
     return desc;
 }
-export default descuento
+export default descuento;
 
