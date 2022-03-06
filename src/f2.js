@@ -16,5 +16,5 @@ form.addEventListener("submit", (event) => {
   var disc = descuento(precio);
   imp = imp * (precio * monto);
   disc = disc * (precio * monto);
-  div.innerHTML ="<p> Impuesto: " + imp + " $,  Descuento: " + disc + " $</p>";
+  div.innerHTML = disc + " $</p>";
 });

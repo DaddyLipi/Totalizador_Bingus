@@ -117,107 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/impuestoEstado.js":[function(require,module,exports) {
-"use strict";
+})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
 
-function impuesto(state) {
-  var estado = {
-    'TX': 0.0625,
-    'AL': 0.04,
-    'CA': 0.085,
-    'NV': 0.08,
-    'UT': 0.0665
-  };
-  return estado[state];
+  return bundleURL;
 }
 
-var _default = impuesto;
-exports.default = _default;
-},{}],"src/descuento.js":[function(require,module,exports) {
-"use strict";
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function descuento(monto) {
-  var desc = 0;
-
-  if (monto >= 30000) {
-    desc = 0.15;
-  } else {
-    if (monto >= 10000) {
-      desc = 0.1;
-    } else {
-      if (monto >= 7000) {
-        desc = 0.07;
-      } else {
-        if (monto >= 3000) {
-          desc = 0.05;
-        } else {
-          desc = 0.03;
-        }
-      }
+    if (matches) {
+      return getBaseURL(matches[0]);
     }
   }
 
-  return desc;
+  return '/';
 }
 
-var _default = descuento;
-exports.default = _default;
-},{}],"src/calculoTotal.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _impuestoEstado = _interopRequireDefault(require("./impuestoEstado.js"));
-
-var _descuento = _interopRequireDefault(require("./descuento.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function total(cantidad, costo, estado) {
-  var precio = cantidad * costo;
-  var disc = (0, _descuento.default)(precio);
-  var imp = (0, _impuestoEstado.default)(estado);
-  precio = precio + precio * imp;
-  precio = precio - precio * disc;
-  return precio;
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
 }
 
-var _default = total;
-exports.default = _default;
-},{"./impuestoEstado.js":"src/impuestoEstado.js","./descuento.js":"src/descuento.js"}],"src/f5.js":[function(require,module,exports) {
-"use strict";
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
 
-var _calculoTotal = _interopRequireDefault(require("./calculoTotal.js"));
+function updateLink(link) {
+  var newLink = link.cloneNode();
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  newLink.onload = function () {
+    link.remove();
+  };
 
-var form = document.querySelector("#primera-funcion-form");
-var precio_input = document.querySelector("#precio");
-var cant_input = document.querySelector("#cantidad");
-var state_input = document.querySelector("#state");
-var div = document.querySelector("#resultado5-div");
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  var precio = precio_input.value;
-  var cantidad = cant_input.value;
-  var estado = state_input.value;
-  var result = (0, _calculoTotal.default)(cantidad, precio, estado);
-  div.innerHTML = result + " $";
-});
-},{"./calculoTotal.js":"src/calculoTotal.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -245,7 +212,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62847" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61224" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -421,5 +388,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f5.js"], null)
-//# sourceMappingURL=/f5.bed91bc9.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/index.js.map

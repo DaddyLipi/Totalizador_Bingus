@@ -7,5 +7,5 @@ const div = document.querySelector("#resultado4-div");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const result = precio_input.value * cant_input.value;
-  div.innerHTML ="<p> Costo Neto: " + result +" $ </p>";
+  div.innerHTML = result +" $";
 });

@@ -195,7 +195,7 @@ form.addEventListener("submit", function (event) {
   var disc = (0, _descuento.default)(precio);
   imp = imp * (precio * monto);
   disc = disc * (precio * monto);
-  div.innerHTML = "<p> Impuesto: " + imp + " $,  Descuento: " + disc + " $</p>";
+  div.innerHTML = disc + " $</p>";
 });
 },{"./impuestoEstado.js":"src/impuestoEstado.js","./descuento.js":"src/descuento.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -225,7 +225,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60903" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62847" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

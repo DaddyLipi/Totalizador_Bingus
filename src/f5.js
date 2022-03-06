@@ -12,5 +12,5 @@ form.addEventListener("submit", (event) => {
   const cantidad = cant_input.value;
   const estado = state_input.value;
   const result = total(cantidad,precio,estado);
-  div.innerHTML ="<p> Costo Final: " + result +" $ </p>";
+  div.innerHTML = result + " $";
 });

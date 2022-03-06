@@ -125,7 +125,7 @@ var div = document.querySelector("#resultado4-div");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   var result = precio_input.value * cant_input.value;
-  div.innerHTML = "<p> Costo Neto: " + result + " $ </p>";
+  div.innerHTML = result + " $";
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -155,7 +155,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61224" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62847" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

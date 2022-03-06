@@ -8,9 +8,7 @@ function total(cantidad,costo,estado)
     let imp = impuesto(estado);
     
     precio = precio + (precio * imp);
-    alert(precio);
     precio = precio - (precio * disc);
-    alert(precio);
     return precio;
 }
 export default total;

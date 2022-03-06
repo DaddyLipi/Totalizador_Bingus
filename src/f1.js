@@ -1,12 +1,20 @@
-//import  from "./App.js";
-const cantidad_input = document.querySelector("#cantidad");
+import impuesto from "./impuestoEstado.js";
+import descuento from "./descuento.js";
+
+const precio_input = document.querySelector("#precio");
+const monto_input = document.querySelector("#cantidad");
+const estado_input=document.querySelector("#state");
 const form = document.querySelector("#primera-funcion-form");
-const div = document.querySelector("#resultado-div");
+const div = document.querySelector("#resultado1-div");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  const cantidad = cantidad_input.value;
-  div.innerHTML = "<p> Cantidad de items: " + cantidad + "</p>";
+  const monto = monto_input.value;
+  const precio = precio_input.value;
+  const estado = estado_input.value;
+  var imp = impuesto(estado);
+  var disc = descuento(precio);
+  imp = imp * (precio * monto);
+  disc = disc * (precio * monto);
+  div.innerHTML =imp + " $ </p>";
 });
-

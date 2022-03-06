@@ -1,5 +1,9 @@
+<!DOCTYPE html>
+
 <html>
   <body>
+
+    <link rel="stylesheet" href="style.css">
     <h1>Totalizador:</h1>
 
     <form id="primera-funcion-form">
@@ -25,18 +29,36 @@
     <h4></h4>
 
     <input type="submit" value="Mostrar" />
-    <div id="resultado2-div"></div>
-    <div id="resultado3-div"></div>
-    <div id="resultado4-div"></div>
-    <div id="resultado4-div"></div>
-    <div id="resultado5-div"></div>
+    <h5></h5>
+    <table class="center">
+      <tr>
+        <th>Costo Neto</th>
+        <th>Costo Total (final)</th>
+        <th>Impuesto</th>
+        <th>Descuento</th>
+        <th>Estado</th>
+      </tr>
+      <tr>
+        <td><div id="resultado4-div"></div></td>
+        <td><div id="resultado5-div"></div></td>
+        <td><div id="resultado1-div"></div></td>
+        <td><div id="resultado2-div"></div></td>
+        <td><div id="resultado3-div"></div></td>
+      </tr>
+    </table>
     </form>
-
+    <h6> </h6>
+    <object data="./fotos/test.jpeg" width="300" height="200"></object>
     <script src="./src/f2.js"></script>
     <script src="./src/f1.js"></script>
     <script src="./src/f3.js"></script>
     <script src="./src/f4.js"></script>
     <script src="./src/f5.js"></script>
+    <footer>
+      <p>Author: Bingus Team<br>
+      <a href="mailto:jose.sanchez.s@ucb.edu.bo">jose.sanchez.s@ucb.edu.bo</a></p>
+      <a href="mailto:francisco.aliss@ucb.edu.bo">francisco.aliss@ucb.edu.bo</a></p>     
+    </footer>
   </body>
 </html>
 

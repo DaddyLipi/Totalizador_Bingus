@@ -7,6 +7,6 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const estado = estado_input.value;
   const imp = impuesto(estado);
-  div.innerHTML ="<p> Estado: " + estado +" --> "+ imp +" % </p>";
+  div.innerHTML = estado +" --> "+ imp +" % </p>";
 });
 

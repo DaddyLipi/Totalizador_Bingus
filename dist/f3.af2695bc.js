@@ -152,7 +152,7 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
   var estado = estado_input.value;
   var imp = (0, _impuestoEstado.default)(estado);
-  div.innerHTML = "<p> Estado: " + estado + " --> " + imp + " % </p>";
+  div.innerHTML = estado + " --> " + imp + " % </p>";
 });
 },{"./impuestoEstado.js":"src/impuestoEstado.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -182,7 +182,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61224" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62847" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
