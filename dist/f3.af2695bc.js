@@ -127,11 +127,11 @@ exports.default = void 0;
 
 function impuesto(state) {
   var estado = {
-    'TX': 6.25,
-    'AL': 4,
-    'CA': 8.25,
-    'NV': 8,
-    'UT': 6.65
+    'TX': 0.0625,
+    'AL': 0.04,
+    'CA': 0.085,
+    'NV': 0.08,
+    'UT': 0.0665
   };
   return estado[state];
 }
@@ -182,7 +182,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60836" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60903" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

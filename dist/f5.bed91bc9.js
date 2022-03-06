@@ -117,16 +117,107 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/f2.js":[function(require,module,exports) {
-var precio_input = document.querySelector("#precio");
+})({"src/impuestoEstado.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function impuesto(state) {
+  var estado = {
+    'TX': 0.0625,
+    'AL': 0.04,
+    'CA': 0.085,
+    'NV': 0.08,
+    'UT': 0.0665
+  };
+  return estado[state];
+}
+
+var _default = impuesto;
+exports.default = _default;
+},{}],"src/descuento.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function descuento(monto) {
+  var desc = 0;
+
+  if (monto >= 30000) {
+    desc = 0.15;
+  } else {
+    if (monto >= 10000) {
+      desc = 0.1;
+    } else {
+      if (monto >= 7000) {
+        desc = 0.07;
+      } else {
+        if (monto >= 3000) {
+          desc = 0.05;
+        } else {
+          desc = 0.03;
+        }
+      }
+    }
+  }
+
+  return desc;
+}
+
+var _default = descuento;
+exports.default = _default;
+},{}],"src/calculoTotal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _impuestoEstado = _interopRequireDefault(require("./impuestoEstado.js"));
+
+var _descuento = _interopRequireDefault(require("./descuento.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function total(cantidad, monto, estado) {
+  var precio = cantidad * monto;
+  var disc = (0, _descuento.default)(precio);
+  var imp = (0, _impuestoEstado.default)(estado);
+  precio = precio + precio * imp;
+  precio = precio - precio * disc;
+  return precio;
+}
+
+var _default = total;
+exports.default = _default;
+},{"./impuestoEstado.js":"src/impuestoEstado.js","./descuento.js":"src/descuento.js"}],"src/f5.js":[function(require,module,exports) {
+"use strict";
+
+var _calculoTotal = _interopRequireDefault(require("./calculoTotal.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var form = document.querySelector("#primera-funcion-form");
-var div = document.querySelector("#resultado2-div");
+var precio_input = document.querySelector("#precio");
+var cant_input = document.querySelector("#cantidad");
+var state_input = document.querySelector("#state");
+var div = document.querySelector("#resultado5-div");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   var precio = precio_input.value;
-  div.innerHTML = "<p> Precio de items: " + precio + "</p>";
+  var cantidad = cant_input.value;
+  var estado = state_input.value;
+  var result = (0, _calculoTotal.default)(cantidad, precio, estado);
+  div.innerHTML = "<p> Costo Final: " + result + " $ </p>";
 });
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./calculoTotal.js":"src/calculoTotal.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -330,5 +421,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f2.js"], null)
-//# sourceMappingURL=/f2.e7099910.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/f5.js"], null)
+//# sourceMappingURL=/f5.bed91bc9.js.map

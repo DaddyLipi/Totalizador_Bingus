@@ -2,22 +2,22 @@ function descuento(monto)
 {
     var desc=0;
     if(monto >= 30000){
-        desc= 1.5;
+        desc= 0.15;
     }
     else{
         if(monto >= 10000){
-            desc= 1;
+            desc= 0.1;
         }
         else{
             if(monto >= 7000){
-                desc= 0.7;
+                desc= 0.07;
             }
             else{
                 if(monto >= 3000){
-                    desc=0.5;
+                    desc=0.05;
                 }
                 else{
-                    desc= 0.3;
+                    desc= 0.03;
                 }
             }
         }
