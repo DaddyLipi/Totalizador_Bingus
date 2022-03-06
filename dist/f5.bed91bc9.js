@@ -186,12 +186,14 @@ var _descuento = _interopRequireDefault(require("./descuento.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function total(cantidad, monto, estado) {
-  var precio = cantidad * monto;
+function total(cantidad, costo, estado) {
+  var precio = cantidad * costo;
   var disc = (0, _descuento.default)(precio);
   var imp = (0, _impuestoEstado.default)(estado);
   precio = precio + precio * imp;
+  alert(precio);
   precio = precio - precio * disc;
+  alert(precio);
   return precio;
 }
 
