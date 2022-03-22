@@ -25,4 +25,5 @@ function descuento(monto)
     return desc;
 }
 export default descuento;
+module.exports = descuento;
 
