@@ -11,6 +11,7 @@
   "author": "Bingus Team",
   "license": "ISC",
   "devDependencies": {
+    "babel": "^6.23.0",
     "jest": "^27.5.1",
     "parcel-bundler": "^1.12.5"
   }
